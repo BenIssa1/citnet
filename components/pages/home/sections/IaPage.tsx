@@ -1,28 +1,10 @@
 import React from 'react';
 import { iaMainArticles, iaSidebarArticles } from "../data/mockData";
 
-interface Article {
-  id: string;
-  title: string;
-  description: string;
-  author: string;
-  date: string;
-  image: string;
-  category: string;
-}
-
-interface SidebarArticle {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  timeAgo: string;
-}
-
 export default function IaPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main content */}
           <div className="lg:col-span-3">

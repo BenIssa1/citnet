@@ -48,16 +48,16 @@ export default function VideoPage() {
                 <div className="flex items-center justify-between bg-[#12141b] p-6">
                     <div className="flex items-center space-x-4">
                         <button >
-                            <Play className="w-10 h-10 text-white" fill="currentColor" />
+                            <Play className="w-7 h-7 md:w-10 md:h-10 text-white" fill="currentColor" />
                         </button>
                         <div>
-                            <p className="text-lg text-white">Émissions tendances</p>
-                            <p className="text-sm text-white/60">{currentVideo.duration}</p>
+                            <p className="text-xs md:text-lg text-white">Émissions tendances</p>
+                            <p className="text-xs md:text-sm text-white/60">{currentVideo.duration}</p>
                         </div>
                     </div>
                     <button className="flex items-center space-x-2 text-white hover:text-white transition-colors">
-                        <ArrowUpRight className="w-6 h-6" />
-                        <span className="text-md font-bold">Voir plus</span>
+                        <ArrowUpRight className="w-4 md:w-6 h-4 md:h-6" />
+                        <span className="text-xs md:text-md font-bold">Voir plus</span>
                     </button>
                 </div>
 
@@ -66,7 +66,7 @@ export default function VideoPage() {
                         {videoList.map((video, index) => (
                             <div
                                 key={video.id}
-                                className="group cursor-pointer min-w-[200px] flex-shrink-0"
+                                className="group cursor-pointer w-48 sm:w-56 md:w-64 lg:w-72 flex-shrink-0"
                                 onClick={() => setCurrentVideo(video)}
                             >
                                 <p className="text-lg font-bold text-white my-5">{index + 1}</p>

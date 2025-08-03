@@ -18,7 +18,7 @@ export default function TabSection({ title, tabs, children, onTabChange }: TabSe
     };
 
     return (
-        <div className="px-4 lg:px-20 my-10">
+        <div className="my-10">
             <h2 className="text-2xl font-bold mb-6">{title}</h2>
             <div className="border-b border-gray-200">
                 <div ref={containerRef} className="relative">

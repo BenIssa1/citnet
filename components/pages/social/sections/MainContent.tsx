@@ -6,7 +6,7 @@ export default function MainContent() {
     <main className="flex-1">
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {articles.map((article, index) => (
-          <ArticleCard key={index} {...article} />
+          <ArticleCard redirect="/social/details" key={index} {...article} />
         ))}
       </div>
     </main>

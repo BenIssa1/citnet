@@ -20,9 +20,9 @@ export default function HeroSection() {
         <div className="px-4 lg:px-20">
             <div className="flex flex-col lg:flex-row bg-black text-white my-10">
                 {/* LEFT SIDE */}
-                <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center">
+                <div className="w-full lg:w-1/2 p-4 mdp-10 flex flex-col justify-center">
                     <p className="text-green-400 font-semibold mb-2">{heroData.badge}</p>
-                    <h1 className="text-pink-500 text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+                    <h1 className="text-pink-500 text-2xl md:text-5xl font-extrabold leading-tight mb-6">
                         {heroData.title}
                     </h1>
                     <p className="text-lg text-gray-200 mb-6">

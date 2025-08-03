@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import Link from "next/link";
 
 type ArticleCardProps = {
     imageUrl: string;
@@ -11,6 +12,7 @@ type ArticleCardProps = {
     authorName: string;
     authorImage: string;
     date: string;
+    redirect?: string;
 };
 
 export default function ArticleCard({
@@ -23,8 +25,9 @@ export default function ArticleCard({
     authorName,
     authorImage,
     date,
+    redirect,
 }: ArticleCardProps) {
-    return (
+    const CardContent = () => (
         <div className="space-y-4">
             <img
                 src={imageUrl}
@@ -53,4 +56,14 @@ export default function ArticleCard({
             </div>
         </div>
     );
+
+    if (redirect) {
+        return (
+            <Link href={redirect} className="block hover:opacity-90 transition-opacity">
+                <CardContent />
+            </Link>
+        );
+    }
+
+    return <CardContent />;
 }

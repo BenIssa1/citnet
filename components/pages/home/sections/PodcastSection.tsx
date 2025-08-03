@@ -4,7 +4,7 @@ import { podcasts } from "../data/mockData";
 
 export default function PodcastSection() {
     return (
-        <div className="px-4 lg:px-20 my-10">
+        <div className="my-10">
             <HomeSectionHeader
                 title="Derniers Podcasts"
                 onLinkClick={() => console.log('Voir plus cliqué')}

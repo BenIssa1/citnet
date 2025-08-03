@@ -7,24 +7,15 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 const links = [
-    "Catégories",
-    "Outils",
-    "Agences",
-    "Écoles",
-    "Événements",
-    "Ressources",
-    "Livre Marketing",
-    "Jobs",
-    "Contact",
-];
-
-const socialIcons = [
-    { href: "#", icon: "/icons/x.svg", alt: "Twitter" },
-    { href: "#", icon: "/icons/linkedln.svg", alt: "LinkedIn" },
-    { href: "#", icon: "/icons/facebook.svg", alt: "Facebook" },
-    { href: "#", icon: "/icons/youtube.svg", alt: "YouTube" },
-    { href: "#", icon: "/icons/instagram.svg", alt: "Instagram" },
-    { href: "#", icon: "/icons/tiktok.svg", alt: "TikTok" },
+    { name: "Catégories", href: "/social" },
+    { name: "Outils", href: "/outils" },
+    { name: "Agences", href: "/agences" },
+    { name: "Écoles", href: "/ecoles" },
+    { name: "Événements", href: "/evenements" },
+    { name: "Ressources", href: "/ressources" },
+    { name: "Livre Marketing", href: "/livre-marketing" },
+    { name: "Jobs", href: "/jobs" },
+    { name: "Contact", href: "/contact" },
 ];
 
 const socialIconsMobile = [
@@ -62,11 +53,11 @@ export default function Navbar() {
                 <div className="flex items-center gap-6 flex-wrap">
                     {links.map((link) => (
                         <Link
-                            key={link}
-                            href="#"
+                            key={link.name}
+                            href={link.href}
                             className="text-white hover:text-blue-600 transition-colors"
                         >
-                            {link}
+                            {link.name}
                         </Link>
                     ))}
                 </div>
@@ -141,13 +132,13 @@ export default function Navbar() {
                         <nav className="flex-1">
                             <ul className="space-y-4">
                                 {links.map((link) => (
-                                    <li key={link}>
+                                    <li key={link.name}>
                                         <Link
-                                            href="#"
+                                            href={link.href}
                                             className="text-white hover:text-blue-300 transition-colors text-md font-medium block py-2"
                                             onClick={toggleMobileMenu}
                                         >
-                                            {link}
+                                            {link.name}
                                         </Link>
                                     </li>
                                 ))}
