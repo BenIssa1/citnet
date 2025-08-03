@@ -1,103 +1,283 @@
+'use client';
+
+import ArticleCard from "@/components/ArticleCard";
+import CategoryList from "@/components/CategoryList";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import HeroArticleCard from "@/components/HeroArticleCard";
+import Navbar from "@/components/Navbar";
+import PostItem from "@/components/PostItem";
 import Image from "next/image";
+import CategoryCard from '@/components/CategoryCard';
+import Timeline from "@/components/Timeline";
+import Pagination from "@/components/Pagination";
+import { useState } from "react";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const articles = [
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/men/32.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/women/22.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/men/32.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/women/22.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/men/32.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
+      date: "20 Jan 2022",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      badgeText: "Facebook",
+      badgeColor: "bg-pink-100 text-black",
+      timeToRead: "8 min lecture",
+      title: "Migrating to Linear 101",
+      excerpt:
+        "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
+      authorName: "Phoenix Baker",
+      authorImage: "https://randomuser.me/api/portraits/women/22.jpg",
+      date: "20 Jan 2022",
+    },
+  ];
+
+  const images = [
+    '/images/popular.png',
+    '/images/popular.png',
+    '/images/popular.png',
+    '/images/popular.png',
+    '/images/popular.png',
+  ];
+
+  const socialIcons = [
+    { href: "#", icon: "/icons/x.svg", alt: "Twitter" },
+    { href: "#", icon: "/icons/linkedln.svg", alt: "LinkedIn" },
+    { href: "#", icon: "/icons/facebook.svg", alt: "Facebook" },
+    { href: "#", icon: "/icons/youtube.svg", alt: "YouTube" },
+    { href: "#", icon: "/icons/instagram.svg", alt: "Instagram" },
+    { href: "#", icon: "/icons/tiktok.svg", alt: "TikTok" },
+  ];
+
+  const categories = [
+    {
+      title: 'SEO',
+      count: 300,
+      imageUrl: '/images/seo.jpg',
+      overlayColor: 'bg-rose-500/50',
+    },
+    {
+      title: 'Contenu',
+      count: 300,
+      imageUrl: '/images/contenu.jpg',
+      overlayColor: 'bg-purple-700/50',
+    },
+    {
+      title: 'Marketing digital',
+      count: 300,
+      imageUrl: '/images/marketing.jpg',
+      overlayColor: 'bg-orange-400/50',
+    },
+    {
+      title: 'IA',
+      count: 300,
+      imageUrl: '/images/ia.jpg',
+      overlayColor: 'bg-indigo-500/50',
+    },
+    {
+      title: 'Technologie',
+      count: 300,
+      imageUrl: '/images/technologie.jpg',
+      overlayColor: 'bg-teal-600/50',
+    },
+  ];
+
+  const timelineData = [
+    {
+      id: 1,
+      date: "Dec 15, 2016",
+      title: "Of course Uber is working on a flying car projet",
+      description: "Innovation dans le transport aérien urbain"
+    },
+    {
+      id: 2,
+      date: "Dec 12, 2016",
+      title: "Sync by 50 wireless headphones review",
+      description: "Test complet des derniers écouteurs sans fil"
+    },
+    {
+      id: 3,
+      date: "Dec 12, 2016",
+      title: "Pay for the power, not for the design",
+      description: "Analyse des tendances du marché tech"
+    },
+    {
+      id: 4,
+      date: "Dec 12, 2016",
+      title: "The Best action camera you can buy",
+      description: "Comparatif des meilleures caméras d'action"
+    },
+    {
+      id: 5,
+      date: "Dec 12, 2016",
+      title: "Honda teases electric concept car with AI-powered emotions",
+      description: "L'avenir de l'automobile électrique et intelligente"
+    }
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
+
+  return (
+    <div>
+      <Header />
+      <Navbar />
+
+      <div className="px-20">
+        <SectionHeader />
+        <HeroArticleCard />
+
+        <div className="flex min-h-screen bg-white">
+          <main className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {articles.map((article, index) => (
+                <ArticleCard key={index} {...article} />
+              ))}
+            </div>
+          </main>
+
+          <aside className="w-1/5 px-4 space-y-6">
+            <div className="max-w-sm mx-auto">
+              <Timeline items={timelineData} />
+
+              <div className="mt-8">
+                <h3 className="font-semibold mb-3">Suivez nous</h3>
+                <div className="flex justify-between gap-4 text-gray-500 text-xl">
+                  <Image src={"/icons/x.svg"} alt={"Twitter"} width={15} height={15} />
+                  <Image src={"/icons/linkedln.svg"} alt={"Twitter"} width={15} height={15} />
+                  <Image src={"/icons/facebook.svg"} alt={"Twitter"} width={15} height={15} />
+                  <Image src={"/icons/youtube.svg"} alt={"Twitter"} width={15} height={15} />
+                  <Image src={"/icons/instagram.svg"} alt={"Twitter"} width={15} height={15} />
+                  <Image src={"/icons/tiktok.svg"} alt={"Twitter"} width={15} height={15} />
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        <div className="py-20">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(page) => setCurrentPage(page)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-20">
+          {categories.map((cat) => (
+            <CategoryCard key={cat.title} {...cat} />
+          ))}
+        </div>
+
+
+      </div>
+
+      <Footer />
     </div>
   );
 }
