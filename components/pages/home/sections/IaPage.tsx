@@ -1,4 +1,5 @@
 import React from 'react';
+import { iaMainArticles, iaSidebarArticles } from "../data/mockData";
 
 interface Article {
   id: string;
@@ -18,86 +19,9 @@ interface SidebarArticle {
   timeAgo: string;
 }
 
-const IaPage: React.FC = () => {
-  const mainArticles: Article[] = [
-    {
-      id: '1',
-      title: 'Migrating to Linear',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      author: 'Phoenix Baker',
-      date: '19 Jan 2022',
-      image: '/images/video_main.jpg',
-      category: 'Design'
-    },
-    {
-      id: '2',
-      title: 'Migrating to Linear',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      author: 'Phoenix Baker',
-      date: '19 Jan 2022',
-      image: '/images/video_main.jpg',
-      category: 'Research'
-    },
-    {
-      id: '3',
-      title: 'Migrating to Linear',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      author: 'Phoenix Baker',
-      date: '19 Jan 2022',
-      image: '/images/video_main.jpg',
-      category: 'Software Engineering'
-    }
-  ];
-
-  const sidebarArticles: SidebarArticle[] = [
-    {
-      id: '1',
-      title: 'Migrating to Linear 101',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      category: 'IA',
-      timeAgo: '34min'
-    },
-    {
-      id: '2',
-      title: 'Migrating to Linear 101',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      category: 'IA',
-      timeAgo: '2 heures'
-    },
-    {
-      id: '3',
-      title: 'Migrating to Linear 101',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      category: 'IA',
-      timeAgo: '3 heures'
-    },
-    {
-      id: '4',
-      title: 'Migrating to Linear 101',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      category: 'IA',
-      timeAgo: 'Hier'
-    },
-    {
-      id: '5',
-      title: 'Migrating to Linear 101',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      category: 'IA',
-      timeAgo: 'Hier'
-    },
-    {
-      id: '6',
-      title: 'Migrating to Linear 101',
-      description: 'Linear helps streamline software projects, sprints, tasks, and bug tracking. Here\'s how to get started.',
-      category: 'IA',
-      timeAgo: '07 mars 2023'
-    }
-  ];
-
+export default function IaPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main content */}
@@ -113,7 +37,7 @@ const IaPage: React.FC = () => {
 
             {/* Articles grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mainArticles.map((article) => (
+              {iaMainArticles.map((article) => (
                 <article key={article.id} className="bg-blog-card rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
                   <img 
                     src={article.image} 
@@ -143,7 +67,7 @@ const IaPage: React.FC = () => {
             <div className="bg-[#181C23] rounded-tr-4xl p-6 text-white sticky top-8">
               <h3 className="text-lg font-semibold mb-6">Articles récents</h3>
               <div className="space-y-4">
-                {sidebarArticles.map((article) => (
+                {iaSidebarArticles.map((article) => (
                   <div key={article.id} className="border-b border-white/10 pb-4 last:border-b-0">
                     <div className="flex items-center justify-start gap-2 mb-2">
                       <span className="text-xs text-white/60 font-medium">
@@ -168,6 +92,4 @@ const IaPage: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default IaPage;
+} 

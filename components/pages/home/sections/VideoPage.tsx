@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Play, ArrowUpRight } from 'lucide-react';
+import { videoData, videoList } from "../data/mockData";
 
 interface Video {
     id: string;
@@ -8,70 +9,8 @@ interface Video {
     thumbnail: string;
 }
 
-const VideoPage: React.FC = () => {
-    const [currentVideo, setCurrentVideo] = useState<Video>({
-        id: 'main',
-        title: 'Migrating to Linear',
-        duration: '1/10 vidéos',
-        thumbnail: '/images/video_main.jpg'
-    });
-
-    const videos: Video[] = [
-        {
-            id: '1',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '2',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '3',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '4',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '5',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '6',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '7',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '8',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-        {
-            id: '9',
-            title: 'Migrating to Linear 101',
-            duration: '08:16',
-            thumbnail: '/images/video_item.jpg'
-        },
-    ];
+export default function VideoPage() {
+    const [currentVideo, setCurrentVideo] = useState<Video>(videoData);
 
     return (
         <div className="min-h-screen bg-video-bg text-video-text bg-[#181C23] my-10">
@@ -124,7 +63,7 @@ const VideoPage: React.FC = () => {
 
                 <div className="overflow-x-auto">
                     <div className="flex gap-4 min-w-full">
-                        {videos.map((video, index) => (
+                        {videoList.map((video, index) => (
                             <div
                                 key={video.id}
                                 className="group cursor-pointer min-w-[200px] flex-shrink-0"
@@ -153,6 +92,4 @@ const VideoPage: React.FC = () => {
             </div>
         </div>
     );
-};
-
-export default VideoPage;
+} 

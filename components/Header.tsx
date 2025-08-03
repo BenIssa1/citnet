@@ -17,17 +17,29 @@ const socialIcons = [
 
 export default function Header() {
     return (
-        <header className="w-full px-20 py-4 flex items-center justify-between bg-white shadow-sm">
+        <header className="w-full px-6 md:px-20 py-4 hidden md:flex items-center justify-between bg-white shadow-sm">
             {/* Logo */}
             <div className="flex items-center gap-2">
-                <Image src="/logo.svg" alt="Citinet Logo" width={100} height={100} />
+                <Image 
+                    src="/logo.svg" 
+                    alt="Citinet Logo" 
+                    width={80} 
+                    height={40}
+                    className="md:w-[100px] md:h-[50px]"
+                />
             </div>
 
-            {/* Socials */}
+            {/* Socials - Hidden on mobile, shown on desktop */}
             <div className="flex items-center gap-4">
                 {socialIcons.map(({ href, icon, alt }) => (
                     <Link key={alt} href={href}>
-                        <Image src={icon} alt={alt} width={15} height={15} />
+                        <Image 
+                            src={icon} 
+                            alt={alt} 
+                            width={15} 
+                            height={15}
+                            className="hover:opacity-80 transition-opacity"
+                        />
                     </Link>
                 ))}
             </div>

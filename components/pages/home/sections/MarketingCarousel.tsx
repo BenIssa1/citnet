@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-
+import { marketingSlides } from "../data/mockData";
 
 interface CarouselSlide {
   id: number;
@@ -19,58 +19,7 @@ interface CarouselSlide {
   description: string;
 }
 
-const slides: CarouselSlide[] = [
-  {
-    id: 1,
-    image: '/images/carousel.jpg',
-    author: "Phoenix Baker",
-    date: "19 Jan 2022",
-    title: "Migrating to Linear",
-    description: "Linear helps streamline software projects, sprints, tasks, and bug tracking. Here's how to get started.",
-  },
-  {
-    id: 2,
-    image: '/images/carousel.jpg',
-    author: "Phoenix Baker",
-    date: "19 Jan 2022",
-    title: "Building Mobile Apps",
-    description: "Discover modern mobile development techniques and best practices for creating engaging user experiences.",
-  },
-  {
-    id: 3,
-    image: '/images/carousel.jpg',
-    author: "Phoenix Baker",
-    date: "19 Jan 2022",
-    title: "Design Systems",
-    description: "Learn how to create and maintain scalable design systems for consistent user interfaces.",
-  },
-  {
-    id: 4,
-    image: '/images/carousel.jpg',
-    author: "Phoenix Baker",
-    date: "19 Jan 2022",
-    title: "Video Production",
-    description: "Professional video production techniques for marketing content and brand storytelling.",
-  },
-  {
-    id: 5,
-    image: '/images/carousel.jpg',
-    author: "Phoenix Baker",
-    date: "19 Jan 2022",
-    title: "User Experience",
-    description: "Creating intuitive user experiences that convert visitors into customers.",
-  },
-  {
-    id: 6,
-    image: '/images/carousel.jpg',
-    author: "Phoenix Baker",
-    date: "19 Jan 2022",
-    title: "Digital Strategy",
-    description: "Comprehensive digital marketing strategies for modern businesses.",
-  },
-];
-
-export function MarketingCarousel() {
+export default function MarketingCarousel() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -93,7 +42,7 @@ export function MarketingCarousel() {
   };
 
   return (
-    <div className=" bg-[#FEEEC5]">
+    <div className="bg-[#FEEEC5]">
       <div className="container mx-auto px-4 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-16">
@@ -116,9 +65,9 @@ export function MarketingCarousel() {
           }}
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {slides.map((slide) => (
+            {marketingSlides.map((slide) => (
               <CarouselItem key={slide.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <Card className="overflow-hidden border-3 border-black bg-card hover:shadow-lg transition-shadow duration-300 py-0 rounded-none ">
+                <Card className="overflow-hidden border-3 border-black bg-card hover:shadow-lg transition-shadow duration-300 py-0 rounded-none">
                   <div className="aspect-[5/3] overflow-hidden">
                     <img
                       src={slide.image}
@@ -164,4 +113,4 @@ export function MarketingCarousel() {
       </div>
     </div>
   );
-}
+} 

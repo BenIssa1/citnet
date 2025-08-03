@@ -16,7 +16,7 @@ export default function HeroArticleCard() {
             </div>
 
             {/* Content */}
-            <div className="md:w-1/3 px-6 space-y-4">
+            <div className="md:w-1/3 md:px-6 mt-6 md:mt-0 space-y-4">
                 <div className="flex items-center space-x-2 bg-[#FAC5AB] w-fit p-1 px-2 rounded-full">
                     <Badge variant="outline" className="text-xs font-bold bg-white rounded-full">Facebook</Badge>
                     <span className="text-xs text-[#731521]">8 min lecture</span>
