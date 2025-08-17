@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white px-6 md:px-12 py-12">
+    <footer className="w-full bg-black text-white px-6 md:px-12 py-12 mt-20">
       {/* Haut : logo + colonnes */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
         {/* Logo */}

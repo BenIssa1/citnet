@@ -36,18 +36,38 @@ export default function Pagination({
         return pages;
     };
 
+    const getMobilePages = () => {
+        // Sur mobile, on affiche seulement la page courante et les pages adjacentes
+        const pages = [];
+        
+        if (totalPages <= 3) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            if (currentPage > 1) pages.push(currentPage - 1);
+            pages.push(currentPage);
+            if (currentPage < totalPages) pages.push(currentPage + 1);
+        }
+        
+        return pages;
+    };
+
     return (
-        <div className="flex items-center justify-between gap-4 py-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4">
+            {/* Bouton Précédent */}
             <button
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="flex items-center gap-1 rounded-lg border px-5 py-3 text-sm font-semibold text-black disabled:opacity-40"
+                className="flex items-center gap-1 rounded-lg border px-3 sm:px-5 py-2 sm:py-3 text-sm font-semibold text-black disabled:opacity-40 w-full sm:w-auto justify-center"
             >
-                <ArrowLeft className='w-5' />
-                Précédent
+                <ArrowLeft className='w-4 sm:w-5' />
+                <span className="hidden sm:inline">Précédent</span>
+                <span className="sm:hidden">Préc.</span>
             </button>
 
-            <div className="flex items-center gap-2">
+            {/* Pages - Desktop */}
+            <div className="hidden sm:flex items-center gap-2">
                 {getPages().map((page, idx) => (
                     <button
                         key={idx}
@@ -66,13 +86,38 @@ export default function Pagination({
                 ))}
             </div>
 
+            {/* Pages - Mobile */}
+            <div className="flex sm:hidden items-center gap-1">
+                {getMobilePages().map((page, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => onPageChange(page)}
+                        className={cn(
+                            'rounded-lg px-3 py-2 text-sm font-medium',
+                            page === currentPage
+                                ? 'bg-violet-200 text-violet-700 font-bold'
+                                : 'text-gray-700 hover:bg-gray-100'
+                        )}
+                    >
+                        {page}
+                    </button>
+                ))}
+                {totalPages > 3 && (
+                    <span className="px-2 text-gray-400 text-sm">
+                        / {totalPages}
+                    </span>
+                )}
+            </div>
+
+            {/* Bouton Suivant */}
             <button
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="flex items-center gap-1 rounded-lg border px-5 py-3 text-sm font-semibold text-black disabled:opacity-40"
+                className="flex items-center gap-1 rounded-lg border px-3 sm:px-5 py-2 sm:py-3 text-sm font-semibold text-black disabled:opacity-40 w-full sm:w-auto justify-center"
             >
-                Suivant
-                <ArrowRight className='w-5' />
+                <span className="hidden sm:inline">Suivant</span>
+                <span className="sm:hidden">Suiv.</span>
+                <ArrowRight className='w-4 sm:w-5' />
             </button>
         </div>
     );
